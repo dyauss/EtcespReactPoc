@@ -1,14 +1,25 @@
+import React, { useState } from 'react';
+
 import { Link } from "react-router-dom";
+import './navbar.css';
 
 export function Navbar(props) {
+
+  const [isOpen, setIsopen] = useState(false);
+
+  const ToggleSidebar = () => {
+    isOpen === true ? setIsopen(false) : setIsopen(true);
+  }
+
   return (
+    <div>
     <nav className="navbar is-link" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
-          <img src="/img/logo_etcesp.png" width="100%" height="100%" />
+          <img src="/img/logo_etcesp.png" width="100%" height="100%" alt="Logo do ETCESP"/>
         </a>
 
-        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onClick={ToggleSidebar}>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -62,5 +73,25 @@ export function Navbar(props) {
         </div>
       </div>
     </nav>
+    <div className={`sidebar ${isOpen == true ? 'active' : ''}`}>
+      <div className="sd-header">
+          <h4 className="mb-0">Sidebar Header</h4>
+          <div className="btn btn-primary" onClick={ToggleSidebar}><i className="fa fa-times"></i></div>
+      </div>
+      <div className="sd-body">
+          <ul>
+              <li><a className="sd-link">Menu Item 1</a></li>
+              <li><a className="sd-link">Menu Item 2</a></li>
+              <li><a className="sd-link">Menu Item 3</a></li>
+              <li><a className="sd-link">Menu Item 4</a></li>
+              <li><a className="sd-link">Menu Item 5</a></li>
+              <li><a className="sd-link">Menu Item 6</a></li>
+              <li><a className="sd-link">Menu Item 7</a></li>
+              <li><a className="sd-link">Menu Item 8</a></li>
+          </ul>
+      </div>
+    </div>
+    <div className={`sidebar-overlay ${isOpen == true ? 'active' : ''}`} onClick={ToggleSidebar}></div>
+    </div>
   )
 }
