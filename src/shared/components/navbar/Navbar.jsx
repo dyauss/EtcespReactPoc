@@ -80,14 +80,26 @@ export function Navbar(props) {
       </div>
       <div className="sd-body">
           <ul>
-              <li><a className="sd-link">Menu Item 1</a></li>
-              <li><a className="sd-link">Menu Item 2</a></li>
+              <li>
+                <a className="sd-link" href={`/home`}>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a className="sd-link" href={'/cat'}>
+                  Cat
+                </a>
+              </li>
               <li><a className="sd-link">Menu Item 3</a></li>
               <li><a className="sd-link">Menu Item 4</a></li>
               <li><a className="sd-link">Menu Item 5</a></li>
               <li><a className="sd-link">Menu Item 6</a></li>
-              <li><a className="sd-link">Menu Item 7</a></li>
-              <li><a className="sd-link">Menu Item 8</a></li>
+              <li><a className="sd-link">Sign up</a></li>
+              <li>
+                <a className="sd-link" href={'login'}>
+                  Log in
+                </a>
+              </li>
           </ul>
       </div>
     </div>

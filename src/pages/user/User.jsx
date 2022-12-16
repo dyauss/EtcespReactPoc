@@ -5,17 +5,24 @@ import { useParams } from "react-router";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function User() {
-  const user = {
-    first: "Your",
-    last: "Name",
-    avatar: "https://placekitten.com/g/200/200",
-    twitter: "your_handle",
-    notes: "Some notes",
-    favorite: true,
-  };
+import axios from "axios";
+import React from "react";
 
-   let params = useParams();
+const baseURL = "http://localhost:8080/clientes";
+
+export default function User() {
+  
+  const [post, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+  console.log(post);
+
+  let params = useParams();
 
   return (
     <div className="container" id="user">
