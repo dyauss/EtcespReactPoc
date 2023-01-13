@@ -13,7 +13,7 @@ export function Navbar(props) {
 
   return (
     <div>
-    <nav className="navbar is-link" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
           <img src="/img/logo_etcesp.png" width="100%" height="100%" alt="Logo do ETCESP"/>

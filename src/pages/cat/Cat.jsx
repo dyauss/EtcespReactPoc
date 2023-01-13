@@ -31,14 +31,7 @@ export default function Cat() {
           </h2>
           <article className="panel is-danger">
             <p className="panel-heading">
-              Danger
-            </p>
-            <p className="panel-tabs">
-              <a className="is-active">All</a>
-              <a>Public</a>
-              <a>Private</a>
-              <a>Sources</a>
-              <a>Forks</a>
+              Lista de clientes cadastrados
             </p>
             <div className="panel-block">
               <p className="control has-icons-left">
@@ -59,6 +52,7 @@ export default function Cat() {
                 <FontAwesomeIcon icon={faUser} />
               </span>
               Francisco Coco
+              <a href={'users/10'}>Excluir</a>
             </a>
             <a className="panel-block" href={'users/3'}>
               <span className="panel-icon">
