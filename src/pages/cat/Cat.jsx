@@ -1,3 +1,5 @@
+import './Cat.css';
+
 import { Form } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -8,6 +10,8 @@ import axios from "axios";
 import React from "react";
 
 const baseURL = "http://localhost:8080/clientes";
+
+
 
 export default function Cat() {
   
@@ -27,9 +31,9 @@ export default function Cat() {
         <section className="section is-small">
           <h1 className="title">Lista de clientes</h1>
           <h2 className="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
+            Abaixo estarão listados os <strong>clientes</strong> do sistema.
           </h2>
-          <article className="panel is-danger">
+          <article className="panel is-black">
             <p className="panel-heading">
               Lista de clientes cadastrados
             </p>
@@ -42,35 +46,49 @@ export default function Cat() {
               </p>
             </div>
             <a className="panel-block is-active" href={'users/1'}>
-              <span className="panel-icon">
-                <FontAwesomeIcon icon={faUser} />
-              </span>
-              José Alberto
+              <div>
+                <span className="panel-icon">
+                  <FontAwesomeIcon icon={faUser} />
+                </span>
+                José Alberto
+              </div>
+              <a href={'users/10'}>Excluir</a>
             </a>
             <a className="panel-block" href={'users/2'}>
-              <span className="panel-icon">
-                <FontAwesomeIcon icon={faUser} />
-              </span>
-              Francisco Coco
+              <div>
+                <span className="panel-icon">
+                  <FontAwesomeIcon icon={faUser} />
+                </span>
+                Francisco Coco
+              </div>
               <a href={'users/10'}>Excluir</a>
             </a>
             <a className="panel-block" href={'users/3'}>
-              <span className="panel-icon">
-                <FontAwesomeIcon icon={faUser} />
-              </span>
-              Zé do Picadinho
+              <div>
+                <span className="panel-icon">
+                  <FontAwesomeIcon icon={faUser} />
+                </span>
+                Zé do Picadinho
+              </div>
+              <a href={'users/10'}>Excluir</a>
             </a>
             <a className="panel-block" href={'users/4'}>
-              <span className="panel-icon">
-                <FontAwesomeIcon icon={faUser} />
-              </span>
-              Pedro Lucas
+              <div>
+                <span className="panel-icon">
+                  <FontAwesomeIcon icon={faUser} />
+                </span>
+                Pedro Lucas
+              </div>
+              <a href={'users/10'}>Excluir</a>
             </a>
             <a className="panel-block" href={'users/4'}>
-              <span className="panel-icon">
-                <FontAwesomeIcon icon={faUser} />
-              </span>
-              <p>Carregando</p>
+              <div>
+                <span className="panel-icon">
+                  <FontAwesomeIcon icon={faUser} />
+                </span>
+                <strong>Carregando...</strong>
+              </div>
+              <a href={'users/10'}>Excluir</a>
             </a>
           </article>
           <Link className="button is-success" to={'/new-user'}>Adicionar cliente</Link>

@@ -33,7 +33,7 @@ export function Navbar(props) {
           </Link>
 
           <a className="navbar-item" href={'/cat'}>
-            Cat
+            Lista de clientes
           </a>
 
           <div className="navbar-item has-dropdown is-hoverable">
@@ -87,7 +87,7 @@ export function Navbar(props) {
               </li>
               <li>
                 <a className="sd-link" href={'/cat'}>
-                  Cat
+                  Lista de clientes
                 </a>
               </li>
               <li><a className="sd-link">Menu Item 3</a></li>
