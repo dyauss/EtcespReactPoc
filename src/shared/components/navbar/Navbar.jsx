@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './navbar.css';
 
+import { LoginButton } from '../loginbutton/LoginButton';
+
 export function Navbar(props) {
 
   const [isOpen, setIsopen] = useState(false);
@@ -38,7 +40,7 @@ export function Navbar(props) {
 
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">
-              More
+              Mais opções
             </a>
 
             <div className="navbar-dropdown">
@@ -61,14 +63,21 @@ export function Navbar(props) {
 
         <div className="navbar-end">
           <div className="navbar-item">
+
             <div className="buttons">
               <a className="button is-primary">
                 <strong>Sign up</strong>
               </a>
-              <a className="button is-light" href={'login'}>
-                Log in
-              </a>
+              {props.isSignedIn ? (
+                <button  className="button is-light" onClick={props.ToggleSignedInn}>
+                  Logout
+                </button >) : (
+                <button  className="button is-light" onClick={props.ToggleSignedInn}>
+                  Login
+                </button >
+                )}
             </div>
+
           </div>
         </div>
       </div>
@@ -97,7 +106,7 @@ export function Navbar(props) {
               <li><a className="sd-link">Sign up</a></li>
               <li>
                 <a className="sd-link" href={'login'}>
-                  Log in
+                  Login
                 </a>
               </li>
           </ul>

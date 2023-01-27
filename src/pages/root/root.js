@@ -13,7 +13,18 @@ const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
 
 export default function Root() {
 
+  const [isLoggedIn, setisLoggedIn] = React.useState(null);
+  const logIn = () => {
+    setisLoggedIn(true);
+  };
+
+  const logOut = () => {
+    setisLoggedIn(false);
+  };
+
   const [post, setPost] = React.useState(null);
+
+  const color = 'blue';
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -25,7 +36,6 @@ export default function Root() {
 
   return (
     <>
-      <Navbar />
       <Outlet />
     </>
   );
