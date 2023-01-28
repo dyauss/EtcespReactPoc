@@ -24,7 +24,7 @@ export default function App() {
   }
 
   function testFunction() {
-    console.log("Yay it works!");
+    console.log("Functiona");
   }
 
   const color = 'red';
@@ -49,6 +49,7 @@ export default function App() {
         <Route path="cat" element={<Cat />} />
         <Route path="new-user" element={<NewUser />} />
         <Route path="users/:userId" element={<User />} />
+        {/*<Route path="users" element={<User />} />*/}
         <Route path="login" element={<Login />} />
       </Routes>
     </BrowserRouter>

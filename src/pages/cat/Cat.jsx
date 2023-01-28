@@ -7,11 +7,53 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import axios from "axios";
-import React from "react";
+import React, { useState } from 'react';
 
 const baseURL = "http://localhost:8080/clientes";
 
 export default function Cat() {
+
+  const myguys = [
+    {
+      id: 1,
+      nome: 'João'
+    },
+    {
+      id: 2,
+      nome: 'Alberto'
+    },
+    {
+      id: 3,
+      nome: 'Carlos'
+    },
+    {
+      id: 4,
+      nome: 'Bruno'
+    }
+  ]
+
+  const [filteredList, setFilteredList] = new useState();
+  const [post, setPost] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+      setFilteredList(response.data)
+    });
+  }, []);
+
+  console.log(post);
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedList = [...post];
+
+    updatedList = updatedList.filter((item) =>
+      item.nome.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
+
+    setFilteredList(updatedList);
+  };
 
   const renderElement = (post) => {
     if (post.length === 0){
@@ -29,31 +71,39 @@ export default function Cat() {
     }
     else {
       return (
-        post.map((user, index) =>
-          <a className="panel-block" href={"users/" + user.id } key={index}>
+        filteredList.map((user, index) => (
+          <Link className="panel-block" to={"/users/" + user.id } key={index} 
+            state={{ 
+              name: user.nome,
+              cpfCnpj: user.cpfCnpj,
+              dataNascimento: user.dataNascimento,
+              tipoLogradouro: user.tipoLogradouro,
+              logradouro: user.logradouro,
+              numero: user.numero,
+              complemento: user.complemento,
+              cidade: user.cidade,
+              estado: user.estado,
+              cep: user.cep,
+              email: user.email,
+              telefone: user.telefone
+            }}
+            >
             <div>
               <span className="panel-icon">
                 <FontAwesomeIcon icon={faUser} />
               </span>
               { user.nome }
             </div>
-            <a href={'users/10'}>Excluir</a>
-            
-          </a>
-        )
+            {/*<Link to="/users/10" state={{ name: user.nome }}>
+              Next Step
+            </Link>*/}
+            {/*<a href={'users/10'}>Excluir</a>*/}
+          </Link>
+        ))
       )
     }
   }
   
-  const [post, setPost] = React.useState([]);
-
-  React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setPost(response.data);
-    });
-  }, []);
-
-  console.log(post);
 
   return (
     <div className="container">
@@ -68,7 +118,7 @@ export default function Cat() {
           </p>
           <div className="panel-block">
             <p className="control has-icons-left">
-              <input className="input is-danger" type="text" placeholder="Search" />
+              <input id="search-box" className="input is-gray-dark" type="text" placeholder="Search" onChange={filterBySearch}/>
               <span className="icon is-left">
                 <i className="fas fa-search" aria-hidden="true"></i>
               </span>
