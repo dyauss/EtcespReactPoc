@@ -9,28 +9,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState } from 'react';
 
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 const baseURL = "http://localhost:8080/clientes";
+
 
 export default function Cat() {
 
-  const myguys = [
-    {
-      id: 1,
-      nome: 'João'
-    },
-    {
-      id: 2,
-      nome: 'Alberto'
-    },
-    {
-      id: 3,
-      nome: 'Carlos'
-    },
-    {
-      id: 4,
-      nome: 'Bruno'
-    }
-  ]
+  const [idSelected, setIdSelected] = new useState();
 
   const [filteredList, setFilteredList] = new useState();
   const [post, setPost] = React.useState([]);
@@ -38,11 +29,17 @@ export default function Cat() {
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       setPost(response.data);
-      setFilteredList(response.data)
+      setFilteredList(response.data);
     });
   }, []);
 
-  console.log(post);
+  const deleteHandler = () => {
+    axios.delete("http://localhost:8080/clientes/delete/" + idSelected ).then(response => {
+      window.location.reload(true);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
   const filterBySearch = (event) => {
     const query = event.target.value;
@@ -53,6 +50,18 @@ export default function Cat() {
     );
 
     setFilteredList(updatedList);
+  };
+
+  const [open, setOpen] = new useState(false);
+  const handleClickOpen = (e, userId) => {
+    e.preventDefault();
+    setIdSelected(userId);
+    setOpen(true);
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    setOpen(false);
   };
 
   const renderElement = (post) => {
@@ -94,10 +103,11 @@ export default function Cat() {
               </span>
               { user.nome }
             </div>
-            {/*<Link to="/users/10" state={{ name: user.nome }}>
-              Next Step
-            </Link>*/}
-            {/*<a href={'users/10'}>Excluir</a>*/}
+            <div>
+              <Button variant="outlined" color="error" onClick={e => handleClickOpen(e, user.id)}>
+                Excluir
+              </Button>
+            </div>
           </Link>
         ))
       )
@@ -125,6 +135,27 @@ export default function Cat() {
             </p>
           </div>
           { renderElement(post) }
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Tem certeza que deseja excluir esse item??"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Essa é uma ação permanente.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancelar</Button>
+              <Button onClick={deleteHandler} autoFocus>
+                Confirmar
+              </Button>
+            </DialogActions>
+          </Dialog>
         </article>
         <Link className="button is-success" to={'/new-user'}>Adicionar cliente</Link>
       </section>
