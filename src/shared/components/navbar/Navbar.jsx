@@ -34,7 +34,7 @@ export function Navbar(props) {
             Home
           </Link>
 
-          <a className="navbar-item" href={'/cat'}>
+          <a className="navbar-item" href={'/users'}>
             Lista de clientes
           </a>
 

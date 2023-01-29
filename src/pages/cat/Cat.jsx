@@ -18,7 +18,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 const baseURL = "http://localhost:8080/clientes";
 
-
 export default function Cat() {
 
   const [idSelected, setIdSelected] = new useState();
@@ -27,6 +26,7 @@ export default function Cat() {
   const [post, setPost] = React.useState([]);
 
   React.useEffect(() => {
+    console.log('go');
     axios.get(baseURL).then((response) => {
       setPost(response.data);
       setFilteredList(response.data);
@@ -67,14 +67,13 @@ export default function Cat() {
   const renderElement = (post) => {
     if (post.length === 0){
       return (
-        <a className="panel-block" href={'users/4'}>
+        <a className="panel-block">
           <div>
             <span className="panel-icon">
               <FontAwesomeIcon icon={faUser} />
             </span>
-            <strong>Carregando...</strong>
+            <strong>Nenhum cliente cadastrado</strong>
           </div>
-          <a href={'users/10'}>Excluir</a>
         </a>
       )
     }

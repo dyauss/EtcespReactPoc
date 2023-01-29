@@ -30,11 +30,10 @@ export default function NewUser() {
     }).then(response => {
       console.log(response.status);
       if (response.status == '200') {
-        console.log('duzentaopora');
         // navigate('/cat');
         // return <Navigate to="/cat" replace />
         // console.log('duzentao');
-        window.location.replace('/cat');
+        window.location.replace('/users');
       }
       
 

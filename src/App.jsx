@@ -46,7 +46,7 @@ export default function App() {
             </Protected>
           } 
         />
-        <Route path="cat" element={<Cat />} />
+        <Route path="users" element={<Cat />} />
         <Route path="new-user" element={<NewUser />} />
         <Route path="users/:userId" element={<User />} />
         {/*<Route path="users" element={<User />} />*/}
