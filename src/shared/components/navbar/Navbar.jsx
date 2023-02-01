@@ -95,7 +95,7 @@ export function Navbar(props) {
                 </a>
               </li>
               <li>
-                <a className="sd-link" href={'/cat'}>
+                <a className="sd-link" href={'/users'}>
                   Lista de clientes
                 </a>
               </li>
