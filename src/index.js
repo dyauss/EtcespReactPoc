@@ -11,46 +11,6 @@ import {
 
 import App from './App';
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Root />,
-//     errorElement: <ErrorPage />,
-//     children: [
-//       {
-//         index: true, element: <Index />
-//       },
-//       {
-//         path: "home",
-//         element: <Home />  
-//       },
-//       {
-//         path: "cat",
-//         element: <Cat />
-//       },
-//       {
-//         path: "new-user",
-//         element: <NewUser />
-//       },
-//       {
-//         path: "users/:userId",
-//         element: <User />
-//       }
-//     ],
-//   },
-//   {
-//     path: "login",
-//     element: <Login />
-//   }
-// ]);
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

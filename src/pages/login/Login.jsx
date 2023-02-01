@@ -3,15 +3,6 @@ import 'bulma/css/bulma.min.css';
 import './login.css'
 
 export default function Login() {
-  const contact = {
-    first: "Your",
-    last: "Name",
-    avatar: "https://placekitten.com/g/200/200",
-    twitter: "your_handle",
-    notes: "Some notes",
-    favorite: true,
-  };
-
   return (
     <section className="hero is-success is-fullheight">
         <div className="hero-body">

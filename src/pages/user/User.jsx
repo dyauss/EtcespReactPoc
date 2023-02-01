@@ -17,7 +17,6 @@ export default function User() {
   const [post, setPost] = new useState([]);
 
   new useEffect(() => {
-    console.log('go2');
     axios.get(baseURL).then((response) => {
       setPost(response.data);
     });
@@ -44,7 +43,6 @@ export default function User() {
     } else {
       console.log(post);
       const escolhido = findUserById(post, number);
-      // const escolhido = post[number-1];
       return (
         <div>
           <p><strong>Nome: </strong>{ escolhido.nome }</p>
@@ -65,7 +63,6 @@ export default function User() {
   };
 
   const putHandler = (params) => {
-    console.log(params);
 
     axios.put("http://localhost:8080/clientes/update/" + params.userId).then(response => {
       window.location.reload(true);

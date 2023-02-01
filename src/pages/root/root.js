@@ -9,8 +9,6 @@ import { Outlet } from "react-router-dom";
 
 const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
 
-// <Homescreen props={post.body}/>
-
 export default function Root() {
 
   const [isLoggedIn, setisLoggedIn] = React.useState(null);

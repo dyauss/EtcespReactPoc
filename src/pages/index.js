@@ -1,4 +1,4 @@
 export * from './home/Home';
-export * from './cat/Cat';
+export * from './users/Users';
 export * from './index/Index';
 export * from './error/Error';

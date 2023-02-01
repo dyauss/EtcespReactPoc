@@ -7,7 +7,7 @@ import Root from './pages/root/root';
 import ErrorPage from "./pages/error/Error";
 import Index from './pages/index/Index';
 import Home from './pages/home/Home';
-import Cat from './pages/cat/Cat';
+import Users from './pages/users/Users';
 import Login from './pages/login/Login';
 import NewUser from './pages/user/NewUser';
 import User from './pages/user/User';
@@ -24,7 +24,7 @@ export default function App() {
   }
 
   function testFunction() {
-    console.log("Functiona");
+    console.log("Funcionando");
   }
 
   const color = 'red';
@@ -46,10 +46,10 @@ export default function App() {
             </Protected>
           } 
         />
-        <Route path="users" element={<Cat />} />
+        <Route path="users" element={<Users />} />
         <Route path="new-user" element={<NewUser />} />
-        <Route path="users/:userId" element={<User />} />
-        {/*<Route path="users" element={<User />} />*/}
+        <Route path="user/:userId" element={<User />} />
+        {/*<Route path="user" element={<User />} />*/}
         <Route path="login" element={<Login />} />
       </Routes>
     </BrowserRouter>

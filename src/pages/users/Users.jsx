@@ -1,4 +1,4 @@
-import './Cat.css';
+import './Users.css';
 
 import { Form } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 const baseURL = "http://localhost:8080/clientes";
 
-export default function Cat() {
+export default function Users() {
 
   const [idSelected, setIdSelected] = new useState();
 
@@ -26,7 +26,6 @@ export default function Cat() {
   const [post, setPost] = React.useState([]);
 
   React.useEffect(() => {
-    console.log('go');
     axios.get(baseURL).then((response) => {
       setPost(response.data);
       setFilteredList(response.data);
@@ -72,7 +71,7 @@ export default function Cat() {
             <span className="panel-icon">
               <FontAwesomeIcon icon={faUser} />
             </span>
-            <strong>Nenhum cliente cadastrado</strong>
+            <strong>Nenhum cliente cadastrado ou serviço não iniciado</strong>
           </div>
         </a>
       )
@@ -80,7 +79,7 @@ export default function Cat() {
     else {
       return (
         filteredList.map((user, index) => (
-          <Link className="panel-block" to={"/users/" + user.id } key={index} 
+          <Link className="panel-block" to={"/user/" + user.id } key={index} 
             state={{ 
               name: user.nome,
               cpfCnpj: user.cpfCnpj,
