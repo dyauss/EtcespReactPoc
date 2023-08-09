@@ -1,2 +1,2 @@
-export * from './navbar/Navbar';
-export * from './homescreen/Homescreen';
+export * from './navbar/Navbar.tsx';
+export * from './homescreen/Homescreen.tsx';
