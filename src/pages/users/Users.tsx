@@ -133,7 +133,6 @@ export default function Users() {
                       </Button>
                     </div>
                   </Link>
-
                   // <Card key={character.id} character={character} />
                 ))
               }
@@ -141,12 +140,10 @@ export default function Users() {
 
         </div>
       )
-}
-
+  }
 
   return (
     <div className="container">
-
       <section className="section is-small">
         <h1 className="title">Lista de clientes</h1>
         <h2 className="subtitle">
